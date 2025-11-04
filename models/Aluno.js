@@ -11,7 +11,7 @@ const Aluno = Database.sequelize.define('aluno', {
     data_cadastro: {
         type: Database.Sequelize.DATE,
         allowNull: false,
-        defaultValue: DataTypes.NOW
+        defaultValue: Database.Sequelize.NOW
     },
 
     nome: {
