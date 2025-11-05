@@ -1,16 +1,27 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const router = express.Router();
-const criarAluno = require('../controllers/alunoController');
+require('dotenv').config();
+const REQ_LIMIT = process.env.REQ_LIMIT;
+const { getForm, createAluno } = require('../controllers/alunoController');
+
+/*=========SEGURANÇA DE REQUISIÇÃO==========*/
+
+const reqLimit = rateLimit({
+    windowMs: 60 * 1000,
+    max: REQ_LIMIT,
+    message: 'Você enviou muitas requisições, tente novamente mais tarde'
+});
+
+/*==========================================*/
 
 router.get('/', (req, res) => {
     res.send('Informações gerais sobre o curso');
 });
 
-router.get('/form', (req, res) => {
-    res.send('Formulário para coleta de dados dos estudantes');
-});
+router.get('/form', reqLimit, getForm);
 
-router.post('/form', criarAluno);
+router.post('/form', reqLimit, createAluno);
 
 router.post('/adm', (req, res) => {
     res.send('Login do admnistrador');
