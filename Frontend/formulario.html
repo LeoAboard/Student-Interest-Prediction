@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Contribuição | DivulgaComp</title>
+  <link rel="stylesheet" href="assets/css/formulario.css">
+</head>
+<body class="form-body">
+
+  <div class="form-container">
+    <a href="index.html" class="btn-voltar"> ← Voltar</a>
+
+    <h2 class="form-titulo">Formulário de Contribuição</h2>
+    <form id="formContribuicao">
+
+      <div class="campo-form">
+        <label>Nome completo*</label>
+        <input type="text" name="nome" placeholder="Digite seu nome" required>
+      </div>
+
+      <div class="campo-form">
+        <label>Data de Nascimento*</label>
+        <input type="date" name="nascimento" required>
+      </div>
+
+      <div class="campo-form">
+        <label>Contato</label>
+        <div class="grupo-input">
+          <select name="tipo_contato">
+            <option>Escolha o tipo</option>
+            <option>Email</option>
+            <option>WhatsApp</option>
+            <option>Telefone</option>
+          </select>
+          <input type="text" name="contato" placeholder="Insira o contato">
+        </div>
+      </div>
+
+      <div class="campo-form">
+            <label>Gênero*</label>
+            <div class="opcoes">
+                <label><input type="radio" name="genero" value="M"> Masculino</label>
+                <label><input type="radio" name="genero" value="F"> Feminino</label>
+                <label><input type="radio" name="genero" value="N"> Prefiro não dizer</label>
+            </div>
+      </div>
+
+      <div class="campo-form">
+            <label>Já prestou ENEM?</label>
+            <div class="opcoes">
+            <label><input type="radio" name="enem" value="sim"> SIM</label>
+            <label><input type="radio" name="enem" value="nao"> NÃO</label>
+            </div>
+      </div>
+
+      <div class="campo-form">
+            <label>Escolaridade*</label>
+            <input type="text" name="escolaridade" placeholder="Nível de ensino conforme a LDB" required>
+      </div>
+
+      <div class="campo-form">
+            <label>Instituição de Ensino*</label>
+            <input type="text" name="instituicao" placeholder="Digite a escola ou universidade" required>
+      </div>
+
+      <div class="grupo-local">
+            <div>
+            <label>Cidade*</label>
+            <input type="text" name="cidade" placeholder="Ex: Três Lagoas" required>
+            </div>
+            <div>
+            <label>UF*</label>
+            <input type="text" name="uf" maxlength="2" required>
+            </div>
+      </div>
+
+      <div class="campo-form">
+            <label>Curso*</label>
+            <input type="text" name="curso" placeholder="Digite o curso" required>
+      </div>
+
+      <div class="campo-form">
+            <label>Turno*</label>
+            <div class="opcoes">
+                <label><input type="radio" name="turno" value="matutino"> Matutino</label>
+                <label><input type="radio" name="turno" value="vespertino"> Vespertino</label>
+                <label><input type="radio" name="turno" value="integral"> Integral</label>
+            </div>
+      </div>
+
+      <h3 class="subtitulo-form">Preferências</h3>
+
+      <div class="campo-form">
+            <label>Conteúdos de interesse*</label>
+            <input type="text" name="interesse" placeholder="Insira a área de interesse" required>
+      </div>
+
+      <div class="campo-form">
+            <label>Rede social mais utilizada*</label>
+            <input type="text" name="rede_social" placeholder="Ex: Instagram, LinkedIn..." required>
+      </div>
+
+        <div class="campo-form">
+            <label>Eventos que já participou ou tem interesse*</label>
+            <div class="opcoes-multiplas">
+                <label><input type="checkbox"> Feira de Profissões</label>
+                <label><input type="checkbox"> Palestras em Escolas</label>
+                <label><input type="checkbox"> Workshop de Programação</label>
+                <label><input type="checkbox"> Hackathon</label>
+                <label><input type="checkbox"> Semana de Tecnologia</label>
+                <label><input type="checkbox"> Congressos</label>
+                <label><input type="checkbox"> Hacknights</label>
+                <label><input type="checkbox"> Outros</label>
+            </div>
+        </div>
+
+      <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+  </div>
+
+  <script src="js/formulario.js"></script>
+</body>
+</html>
