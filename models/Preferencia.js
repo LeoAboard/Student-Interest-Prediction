@@ -37,6 +37,10 @@ const Preferencia = Database.sequelize.define('preferencia', {
         type: Database.Sequelize.TEXT,
         allowNull: true
     },
+},
+{
+    tableName: 'preferencia',
+    timestamps: false
 });
 
 module.exports = Preferencia;

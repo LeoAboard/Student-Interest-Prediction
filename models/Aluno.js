@@ -36,19 +36,19 @@ const Aluno = Database.sequelize.define('aluno', {
 
     contato_id: {
         type: Database.Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         foreignKey: true
     },
 
     escolaridade_id: {
         type: Database.Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         foreignKey: true
     },
 
     preferencia_id: {
         type: Database.Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         foreignKey: true
     },
 
@@ -56,6 +56,10 @@ const Aluno = Database.sequelize.define('aluno', {
         type: Database.Sequelize.BOOLEAN,
         allowNull: false
     },
+}, 
+{
+    tableName: 'aluno',
+    timestamps: false
 });
 
 module.exports = Aluno;

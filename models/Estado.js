@@ -12,6 +12,10 @@ const Estado = Database.sequelize.define('estado', {
         type: Database.Sequelize.STRING(10),
         allowNull: false
     }
+},
+{
+    tableName: 'estado',
+    timestamps: false
 });
 
 module.exports = Estado;

@@ -17,6 +17,10 @@ const Contato = Database.sequelize.define('contato', {
         type: Database.Sequelize.STRING(100),
         allowNull: false
     },
+},
+{
+    tableName: 'contato',
+    timestamps: false
 });
 
 module.exports = Contato;
