@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área Administrativa - DivulgaComp</title>
+  <link rel="stylesheet" href="assets/css/adm.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body class="adm-layout">
+  <aside class="sidebar">
+    <h2 class="sidebar-title">Gráficos/Dashboards</h2>
+    <ul class="sidebar-menu">
+      <li><a href="#" data-target="geral" class="active"><i class="fa-solid fa-chart-line"></i> Visão Geral</a></li>
+      <li><a href="#" data-target="publico"><i class="fa-solid fa-users"></i> Análise do Público</a></li>
+      <li><a href="#" data-target="redes"><i class="fa-solid fa-handshake"></i> Redes Sociais</a></li>
+      <li><a href="#" data-target="eventos"><i class="fa-solid fa-calendar"></i> Eventos</a></li>
+      <li><a href="#" data-target="novidades"><i class="fa-solid fa-lightbulb"></i> Novidades</a></li>
+      <li><a href="#" data-target="base"><i class="fa-solid fa-database"></i> Base de Dados</a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <header class="adm-header">
+      <h1>Área Administrativa</h1>
+      <hr>
+    </header>
+
+    <section id="geral" class="adm-section active">
+      <h2>Visão Geral</h2>
+      <p>Resumo consolidado dos indicadores principais.</p>
+      <div class="dashboard-grid">
+        <div class="card">📊 Gráfico de Crescimento</div>
+        <div class="card">👥 Total de Participantes</div>
+        <div class="card">📈 Engajamento Médio</div>
+      </div>
+    </section>
+
+    <section id="publico" class="adm-section">
+      <h2>Análise do Público</h2>
+      <p>Distribuição demográfica e perfil dos contribuintes.</p>
+      <div class="dashboard-grid">
+        <div class="card">Idade x Gênero</div>
+        <div class="card">Escolaridade</div>
+        <div class="card">Instituições</div>
+      </div>
+    </section>
+
+    <section id="redes" class="adm-section">
+      <h2>Redes Sociais</h2>
+      <p>Análise de plataformas mais utilizadas.</p>
+      <div class="dashboard-grid">
+        <div class="card">Plataformas Preferidas</div>
+        <div class="card">Interações por Rede</div>
+      </div>
+    </section>
+
+    <section id="eventos" class="adm-section">
+      <h2>Eventos</h2>
+      <p>Estatísticas de participação e engajamento.</p>
+      <div class="dashboard-grid">
+        <div class="card">Feira de Profissões</div>
+        <div class="card">Hackathons</div>
+        <div class="card">Workshops</div>
+      </div>
+    </section>
+
+    <section id="novidades" class="adm-section">
+      <h2>Novidades</h2>
+      <p>Indicadores sobre inovações e feedbacks recentes.</p>
+      <div class="dashboard-grid">
+        <div class="card">Últimos Insights</div>
+        <div class="card">Sugestões Relevantes</div>
+      </div>
+    </section>
+
+    <section id="base" class="adm-section">
+      <h2>Base de Dados</h2>
+      <p>Visualização e controle de dados armazenados.</p>
+      <div class="dashboard-grid">
+        <div class="card">Consulta SQL</div>
+        <div class="card">Exportar CSV</div>
+        <div class="card">Resumo de Registros</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/js/adm.js"></script>
+</body>
+</html>
