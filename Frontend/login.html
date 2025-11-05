@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SAD DivulgaComp</title>
+  <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body class="login-body">
+  <main class="login-container">
+    <h1 class="titulo-login">Área Administrativa</h1>
+    <p class="subtitulo-login">Acesse o painel com suas credenciais</p>
+
+    <form id="loginForm" class="login-form">
+      <div class="campo-form">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" placeholder="Digite seu usuário" required>
+      </div>
+
+      <div class="campo-form">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+      </div>
+
+      <button type="submit" class="btn-login">Entrar</button>
+      <p id="login-msg" class="msg-erro"></p>
+    </form>
+
+    <a href="home.html" class="voltar-site">← Voltar ao site</a>
+  </main>
+
+  <script src="assets/js/login.js"></script>
+</body>
+</html>
