@@ -20,8 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ).map(el => el.parentElement.textContent.trim());
     dados.eventos = eventosSelecionados;
 
+    console.log("Dados coletados do formulário:", dados);
+
     try {
-      const resposta = await fetch("http://localhost:3000/formulario", {
+      const resposta = await fetch("http://localhost:3000/form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
