@@ -8,6 +8,12 @@ const Preferencia = Database.sequelize.define('preferencia', {
         autoIncrement: true
     },
 
+    aluno_id: {
+        type: Database.Sequelize.INTEGER,
+        allowNull: false,
+        foreignKey: true
+    },
+
     area_atuacao: {
         type: Database.Sequelize.STRING(100),
         allowNull: false
@@ -31,6 +37,12 @@ const Preferencia = Database.sequelize.define('preferencia', {
     faz_enem: {
         type: Database.Sequelize.BOOLEAN,
         allowNull: false
+    },
+
+    curso_id: {
+        type: Database.Sequelize.INTEGER,
+        allowNull: false,
+        foreignKey: true
     },
 
     observacao: {

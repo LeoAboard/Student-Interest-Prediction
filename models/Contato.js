@@ -8,6 +8,12 @@ const Contato = Database.sequelize.define('contato', {
         autoIncrement: true
     },
 
+    aluno_id: {
+        type: Database.Sequelize.INTEGER,
+        allowNull: false,
+        foreignKey: true
+    },
+
     tipo: {
         type: Database.Sequelize.STRING(25),
         allowNull: false
