@@ -34,19 +34,13 @@ const Aluno = Database.sequelize.define('aluno', {
         allowNull: false
     },
 
-    contato_id: {
-        type: Database.Sequelize.INTEGER,
-        allowNull: true,
-        foreignKey: true
-    },
-
     escolaridade_id: {
         type: Database.Sequelize.INTEGER,
         allowNull: true,
         foreignKey: true
     },
 
-    preferencia_id: {
+    cidade_id: {
         type: Database.Sequelize.INTEGER,
         allowNull: true,
         foreignKey: true
