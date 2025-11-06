@@ -4,27 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Capturar os dados do formulário
     const formData = new FormData(form);
     const dados = {};
 
-    // Converter para objeto simples
     formData.forEach((valor, chave) => {
       dados[chave] = valor;
     });
 
-    // Capturar valores de checkboxes e radios adicionais
     dados.genero = form.querySelector('input[name="genero"]:checked')?.value || null;
     dados.turno = form.querySelector('input[name="turno"]:checked')?.value || null;
     dados.enem = form.querySelector('input[name="enem"]:checked')?.value || null;
 
-    // Capturar checkboxes de eventos selecionados
     const eventosSelecionados = Array.from(
       form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')
     ).map(el => el.parentElement.textContent.trim());
     dados.eventos = eventosSelecionados;
 
-    // Enviar JSON para a API
     try {
       const resposta = await fetch("http://localhost:3000/api/alunos", {
         method: "POST",
@@ -49,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Função para mostrar mensagens temporárias
   function exibirMensagem(texto, tipo) {
     let msg = document.getElementById("msg");
     if (!msg) {
