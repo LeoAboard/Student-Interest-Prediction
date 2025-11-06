@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dados.eventos = eventosSelecionados;
 
     try {
-      const resposta = await fetch("http://localhost:3000/api/alunos", {
+      const resposta = await fetch("http://localhost:3000/formulario", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
         exibirMensagem("Formulário enviado com sucesso!", "success");
         form.reset();
       } else {
-        exibirMensagem(`Erro: ${resultado.erro || "Falha no envio."}`, "error");
+        exibirMensagem(`Erro: ${resultado.error || "Falha no envio."}`, "error");
       }
 
-    } catch (erro) {
-      console.error(erro);
+    } catch (error) {
+      console.error(error);
       exibirMensagem("Erro de conexão com o servidor.", "error");
     }
   });
