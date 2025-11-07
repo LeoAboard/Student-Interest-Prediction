@@ -74,7 +74,7 @@ async function createAluno(req, res) {
             contato
         });
 
-        return res.status(201).json({ sucess: "Informações enviadas!" })
+        return res.status(201).json({ success: "Informações enviadas!" })
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
     }

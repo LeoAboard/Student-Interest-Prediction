@@ -4,29 +4,26 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Capturar os dados do formulário
     const formData = new FormData(form);
     const dados = {};
 
-    // Converter para objeto simples
     formData.forEach((valor, chave) => {
       dados[chave] = valor;
     });
 
-    // Capturar valores de checkboxes e radios adicionais
     dados.genero = form.querySelector('input[name="genero"]:checked')?.value || null;
     dados.turno = form.querySelector('input[name="turno"]:checked')?.value || null;
     dados.enem = form.querySelector('input[name="enem"]:checked')?.value || null;
 
-    // Capturar checkboxes de eventos selecionados
     const eventosSelecionados = Array.from(
       form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')
     ).map(el => el.parentElement.textContent.trim());
     dados.eventos = eventosSelecionados;
 
-    // Enviar JSON para a API
+    console.log("Dados coletados do formulário:", dados);
+
     try {
-      const resposta = await fetch("http://localhost:3000/api/alunos", {
+      const resposta = await fetch("http://localhost:3000/form", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -40,16 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
         exibirMensagem("Formulário enviado com sucesso!", "success");
         form.reset();
       } else {
-        exibirMensagem(`Erro: ${resultado.erro || "Falha no envio."}`, "error");
+        exibirMensagem(`Erro: ${resultado.error || "Falha no envio."}`, "error");
       }
 
-    } catch (erro) {
-      console.error(erro);
+    } catch (error) {
+      console.error(error);
       exibirMensagem("Erro de conexão com o servidor.", "error");
     }
   });
 
-  // Função para mostrar mensagens temporárias
   function exibirMensagem(texto, tipo) {
     let msg = document.getElementById("msg");
     if (!msg) {
