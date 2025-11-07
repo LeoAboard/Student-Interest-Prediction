@@ -1,17 +1,20 @@
 const Aluno = require("../models/Aluno");
 const Escolaridade = require("../models/Escolaridade");
 const Cidade = require("../models/Cidade");
+const UF = require("../models/Estado")
 
 async function getForm(req, res) {
     try {    
         const escolaridade = await Escolaridade.findAll();
         const cidade = await Cidade.findAll({
-            attributes: ['nome', 'id']
+            attributes: ['id', 'nome', 'estado_id']
         });
+        const uf = await UF.findAll();
 
        return res.json({
         escolaridade,
-        cidade
+        cidade,
+        uf
        });
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno` });

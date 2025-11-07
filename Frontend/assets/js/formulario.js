@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("formContribuicao");
 
   // --- LÓGICA DE ENVIO (SUBMIT) ---
-  // Esta parte não muda e já está correta.
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -45,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /**
    * Função auxiliar para popular um <select> com opções.
-   * @param {HTMLSelectElement} selectElement - O elemento <select> do HTML.
-   * @param {Array} itens - O array de dados vindo da API (ex: data.cidade).
-   * @param {string} placeholder - O texto da primeira opção (ex: "Selecione a cidade").
+   * @param {HTMLSelectElement} selectElement
+   * @param {Array} itens 
+   * @param {string} placeholder 
    */
   function popularSelect(selectElement, itens, placeholder) {
     while (selectElement.options.length > 1) {
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       itens.forEach(item => {
         const option = document.createElement("option");
         option.value = item.id; 
-        option.textContent = item.nome;
+        option.textContent = item.nome || item.nivel || item.uf ||"Sem nome";
         selectElement.appendChild(option);
       });
     }
@@ -80,16 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log("DADOS RECEBIDOS DA API:", data);
     
-      // 3. Seleciona os elementos <select>
       const selectCidade = document.getElementById("cidade");
       const selectEscolaridade = document.getElementById("escolaridade");
       const selectUF = document.getElementById("uf");
 
-      // 4. Popula cada <select> com os dados da API
-      // (Estou assumindo que a API retorna data.cidade, data.escolaridade e data.uf)
       popularSelect(selectCidade, data.cidade, "Selecione a cidade");
       popularSelect(selectEscolaridade, data.escolaridade, "Selecione a escolaridade");
-      popularSelect(selectUF, data.uf, "Selecione o UF"); // Verifique se sua API retorna 'data.uf'
+      popularSelect(selectUF, data.uf, "Selecione o UF");
 
     } catch (erro) {
         console.error("Falha ao buscar dados para o formulário:", erro);
