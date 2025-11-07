@@ -24,7 +24,6 @@ function generalValidator() {
         body('rede_social').isIn(['Instagram', 'Facebook', 'TikTok', 'Twitter', 'Whatsapp']).withMessage("A rede social é inválida"),
 
         //interesse
-
     ];
 }
 
