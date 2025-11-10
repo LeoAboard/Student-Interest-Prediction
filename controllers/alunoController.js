@@ -10,8 +10,9 @@ async function getForm(req, res) {
         const escolaridade = await Escolaridade.findAll();
         const curso = await Curso.findAll();
         const cidade = await Cidade.findAll({
-            attributes: ['nome', 'id']
+            attributes: ['id', 'nome', 'estado_id']
         });
+        const uf = await UF.findAll();
 
        return res.json({
         escolaridade,
