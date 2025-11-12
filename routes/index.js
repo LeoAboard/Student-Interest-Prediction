@@ -4,6 +4,7 @@ const router = express.Router();
 require('dotenv').config();
 const REQ_LIMIT = process.env.REQ_LIMIT;
 const { getForm, createAluno } = require('../controllers/alunoController');
+const { login, exibirGraficos } = require('../controllers/admController');
 
 /*=========SEGURANÇA DE REQUISIÇÃO==========*/
 
@@ -27,8 +28,6 @@ router.post('/adm', (req, res) => {
     res.send('Login do admnistrador');
 });
 
-router.get('/adm', (req, res) => {
-    res.send('Visualização dos gráficos');
-});
+router.get('/adm', exibirGraficos);
 
 module.exports = router;

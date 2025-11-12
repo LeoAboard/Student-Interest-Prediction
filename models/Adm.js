@@ -1,15 +1,14 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../Database.js";
+const Database = require("./Database");
 
-const Adm = sequelize.define("admin", {
+const Adm = Database.sequelize.define("admin", {
     email: { 
-        type: DataTypes.STRING, 
+        type: Database.Sequelize.STRING, 
         allowNull: false, 
         unique: true 
     },
 
     password: { 
-        type: DataTypes.STRING, 
+        type: Database.Sequelize.STRING, 
         allowNull: false
     }
 },
@@ -18,4 +17,4 @@ const Adm = sequelize.define("admin", {
     timestamps: false
 });
 
-export default Adm;
+module.exports = Adm;

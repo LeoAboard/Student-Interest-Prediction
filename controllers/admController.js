@@ -1,10 +1,9 @@
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import Adm from "../models/Adm";
-import dotenv from "dotenv";
-dotenv.config();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const Adm = require("../models/Adm");
+require('dotenv').config();
 
-async function login(req, res){
+async function login(req, res) {
     try{
         const { email, senha } = req.body;
 
@@ -24,13 +23,24 @@ async function login(req, res){
     }
 }
 
-async function exibirGraficos(req, res){
+async function exibirGraficos(req, res) {
     try{
         const { ano_limite } = req.body;
 
-        
+        const resp = await fetch("http://127.0.0.1:5000/processar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ ano_limite }),
+        });
 
-        return res.status(201).json({ success: "Sucesso!" })
+        if (!resp.ok) {
+            const text = await resp.text();
+            console.error("Erro do Flask:", text);  
+            throw new Error(`Flask retornou ${resp.status}`);
+          }
+
+        const resultado = await resp.json();
+        res.json(resultado);
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
     }
