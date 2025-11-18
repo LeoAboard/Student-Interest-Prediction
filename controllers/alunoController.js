@@ -12,7 +12,6 @@ async function getForm(req, res) {
         const cidade = await Cidade.findAll({
             attributes: ['id', 'nome', 'estado_id']
         });
-        const uf = await UF.findAll();
 
        return res.json({
         escolaridade,
@@ -75,7 +74,7 @@ async function createAluno(req, res) {
             contato
         });
 
-        return res.status(201).json({ success: "Informações enviadas!" })
+        return res.status(201).json({ success: "Informações enviadas!" });
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
     }

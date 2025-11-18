@@ -1,23 +1,48 @@
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const { generateToken } = require('../middlewares/auth');
 const Adm = require("../models/Adm");
+const Database = require("../models/Database");
 require('dotenv').config();
+
+async function register(req, res){
+    try {
+        const { usuario, senha } = req.body;
+        
+        const hash = await bcrypt.hash(senha, 10);
+        Database.sequelize.query(
+            'INSERT INTO admin (usuario, password) VALUES ($usuario, $hash)',
+            {
+                bind: { usuario, hash },
+                type: Database.Sequelize.QueryTypes.INSERT
+            }
+        );
+
+        return res.status(201).json({ success: "Informações enviadas!" });
+    } catch(error) {
+        return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
+    }
+}
 
 async function login(req, res) {
     try{
-        const { email, senha } = req.body;
+        const { usuario, senha } = req.body;
 
-        const adm = await Adm.findOne({ where: { email } });
+        const adm = await Adm.findOne({ where: { usuario } });
         if(!adm) return res.status(403).json({ error: "Usuário ou senha incorretos" });
 
         const valid = await bcrypt.compare(senha, adm.password);
         if (!valid) return res.status(403).json({ error: "Usuário ou senha incorretos" });
 
-        const token = jwt.sign({ id: adm.id, email: adm.email }, process.env.JWT_SECRET, {
-            expiresIn: "1h",
-        });
+        const token = generateToken(adm.id);
 
-        res.json({ message: "Login bem-sucedido" });
+        res.cookie('token', token, {         
+            httpOnly: true,
+            secure: false,
+            maxAge: 24 * 60 * 60 * 1000,
+            sameSite: 'lax'
+        })
+
+        return res.status(201).json({ message: "Login bem sucedido!" });
     } catch (error) {
         return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
     }
@@ -27,23 +52,21 @@ async function exibirGraficos(req, res) {
     try{
         const { ano_limite } = req.body;
 
-        const resp = await fetch("http://127.0.0.1:5000/processar", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ano_limite }),
-        });
 
-        if (!resp.ok) {
-            const text = await resp.text();
-            console.error("Erro do Flask:", text);  
-            throw new Error(`Flask retornou ${resp.status}`);
-          }
-
-        const resultado = await resp.json();
-        res.json(resultado);
+        return res.status(201).json({ message: "Gráficos: " });
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
     }
 }
 
-module.exports = { login, exibirGraficos };
+async function logout(req, res) {
+    try{
+        res.clearCookie("token");
+
+        return res.status(201).json({ message: "Até mais!" });
+    } catch(error) {
+        return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
+    }
+}
+
+module.exports = { logout, register, login, exibirGraficos };

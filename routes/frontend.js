@@ -12,9 +12,9 @@ router.get("/home", (req, res) => {
     res.sendFile(path.join(frontendPath, "home.html"));
 });
 
-router.get("/adm", (req, res) => {
-    res.sendFile(path.join(frontendPath, "adm.html"));
-});
+// router.get("/adm", (req, res) => {
+//     res.sendFile(path.join(frontendPath, "adm.html"));
+// });
 
 router.get("/formulario", (req, res) => {
     res.sendFile(path.join(frontendPath, "formulario.html"));

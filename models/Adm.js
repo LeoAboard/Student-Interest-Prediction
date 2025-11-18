@@ -1,7 +1,7 @@
 const Database = require("./Database");
 
 const Adm = Database.sequelize.define("admin", {
-    email: { 
+    usuario: { 
         type: Database.Sequelize.STRING, 
         allowNull: false, 
         unique: true 
