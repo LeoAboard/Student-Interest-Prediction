@@ -52,11 +52,13 @@ body.form-body {
   padding-top: 15px;
 }
 
-.campo-form {
+.campo-form,
+.grupo-local {
   margin-bottom: 20px;
 }
 
-.campo-form label {
+.campo-form label,
+.grupo-local {
   font-size: 0.9rem;
   display: block;
   margin-bottom: 6px;
@@ -64,6 +66,7 @@ body.form-body {
 }
 
 .campo-form input,
+.grupo-local input,
 .campo-form select {
   padding: 10px;
   border-radius: 8px;
