@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Contribuição | DivulgaComp</title>
+  <link rel="icon" type="image/png" href="assets/img/livros.png">
   <link rel="stylesheet" href="assets/css/formulario.css">
 </head>
 <body class="form-body">
@@ -75,11 +76,17 @@
           </div>
       </div>      
 
+      
+
+
+
+      <h3 class="subtitulo-form">Preferências</h3>
       <div class="campo-form">
-            <label>Curso*</label>
+            <label>Curso de interesse*</label>
             <input type="text" name="curso" placeholder="Digite o curso" required>
       </div>
 
+      
       <div class="campo-form">
             <label>Turno*</label>
             <div class="opcoes">
@@ -88,8 +95,6 @@
                 <label><input type="radio" name="turno" value="integral"> Integral</label>
             </div>
       </div>
-
-      <h3 class="subtitulo-form">Preferências</h3>
 
       <div class="campo-form">
             <label>Conteúdos de interesse*</label>
@@ -114,6 +119,21 @@
                 <label><input type="checkbox"> Outros</label>
             </div>
         </div>
+        <div class="campo-form">
+          <label for="observações">Observações</label>
+          <textarea id="obs"
+                  name="observacoes"
+                  class="campo-observacoes"
+                  rows="6"
+                  placeholder="Descreva detalhes adicionais..."></textarea>
+        </div>
+
+        <div class="campo-form">
+          <div class="consentimento">
+            <label> <input type="checkbox"> Concordo com a coleta, armazenamento, tratamento e compartilhamento dos meus dados para a otimização de campanhas de publicidade e aprimoramento de estratégias de comunicação e divulgação.</label>
+          </div>
+        </div>
+
 
       <button type="submit" class="btn-enviar">Enviar</button>
     </form>

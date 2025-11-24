@@ -52,11 +52,13 @@ body.form-body {
   padding-top: 15px;
 }
 
-.campo-form {
+.campo-form,
+.grupo-local {
   margin-bottom: 20px;
 }
 
-.campo-form label {
+.campo-form label,
+.grupo-local {
   font-size: 0.9rem;
   display: block;
   margin-bottom: 6px;
@@ -64,6 +66,7 @@ body.form-body {
 }
 
 .campo-form input,
+.grupo-local input,
 .campo-form select {
   padding: 10px;
   border-radius: 8px;
@@ -121,3 +124,23 @@ body.form-body {
 .btn-enviar:hover {
   background-color: #005fcc;
 }
+
+/*formulário*/
+.campo-observacoes {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  outline: none;
+}
+
+.campo-observacoes:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
