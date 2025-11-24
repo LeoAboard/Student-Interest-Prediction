@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Contribuição | DivulgaComp</title>
+  <link rel="icon" type="image/png" href="assets/img/livros.png">
   <link rel="stylesheet" href="assets/css/formulario.css">
 </head>
 <body class="form-body">
 
   <div class="form-container">
-    <a href="home.html" class="btn-voltar"> ← Voltar</a>
+    <a href="home" class="btn-voltar"> ← Voltar</a>
 
     <h2 class="form-titulo">Formulário de Contribuição</h2>
     <form id="formContribuicao">
@@ -55,31 +56,37 @@
       </div>
 
       <div class="campo-form">
-            <label>Escolaridade*</label>
-            <input type="text" name="escolaridade" placeholder="Nível de ensino conforme a LDB" required>
-      </div>
-
-      <div class="campo-form">
-            <label>Instituição de Ensino*</label>
-            <input type="text" name="instituicao" placeholder="Digite a escola ou universidade" required>
-      </div>
-
-      <div class="grupo-local">
-            <div>
-            <label>Cidade*</label>
-            <input type="text" name="cidade" placeholder="Ex: Três Lagoas" required>
+          <label>Escolaridade*</label>
+          <select name="escolaridade" id="escolaridade" required>
+              <option value="" disabled selected>Selecione a escolaridade</option>
+          </select>
+      
+          <div class="grupo-local">
+            <div class="campo-form"> <label>Cidade*</label>
+                <select name="cidade" id="cidade" required>
+                    <option value="" disabled selected>Selecione a cidade</option>
+                    </select>
             </div>
-            <div>
-            <label>UF*</label>
-            <input type="text" name="uf" maxlength="2" required>
+            <div class="campo-form">
+                <label>UF*</label>
+                <select name="uf" id="uf" required>
+                    <option value="" disabled selected>Selecione o UF</option>
+                    </select>
             </div>
-      </div>
+          </div>
+      </div>      
 
+      
+
+
+
+      <h3 class="subtitulo-form">Preferências</h3>
       <div class="campo-form">
-            <label>Curso*</label>
+            <label>Curso de interesse*</label>
             <input type="text" name="curso" placeholder="Digite o curso" required>
       </div>
 
+      
       <div class="campo-form">
             <label>Turno*</label>
             <div class="opcoes">
@@ -88,8 +95,6 @@
                 <label><input type="radio" name="turno" value="integral"> Integral</label>
             </div>
       </div>
-
-      <h3 class="subtitulo-form">Preferências</h3>
 
       <div class="campo-form">
             <label>Conteúdos de interesse*</label>
@@ -114,6 +119,21 @@
                 <label><input type="checkbox"> Outros</label>
             </div>
         </div>
+        <div class="campo-form">
+          <label for="observações">Observações</label>
+          <textarea id="obs"
+                  name="observacoes"
+                  class="campo-observacoes"
+                  rows="6"
+                  placeholder="Descreva detalhes adicionais..."></textarea>
+        </div>
+
+        <div class="campo-form">
+          <div class="consentimento">
+            <label> <input type="checkbox"> Concordo com a coleta, armazenamento, tratamento e compartilhamento dos meus dados para a otimização de campanhas de publicidade e aprimoramento de estratégias de comunicação e divulgação.</label>
+          </div>
+        </div>
+
 
       <button type="submit" class="btn-enviar">Enviar</button>
     </form>

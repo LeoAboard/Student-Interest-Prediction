@@ -7,7 +7,7 @@ const HOST = process.env.HOST;
 
 const sequelize = new Sequelize(BD_NAME, BD_USER, BD_PASS, {
     host: HOST,
-    dialect: 'postgresql'
+    dialect: "postgresql"
 });
 
 module.exports = {
