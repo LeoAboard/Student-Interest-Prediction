@@ -8,6 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- LÓGICA DE ENVIO (SUBMIT) ---
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Verificação de consentimento e bloqueio de submissão
+    const consentiu = form.querySelector('input[name="consentimento"]').checked;
+    if (!consentiu) {
+      exibirMensagem("Aceite o termo antes de enviar.", "error");
+      return;
+    }
+    
+    
     const formData = new FormData(form);
     const dados = {};
 
