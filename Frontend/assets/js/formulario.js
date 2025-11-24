@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     dados.eventos = eventosSelecionados;
 
     try {
-      const resposta = await fetch("http://localhost:3000/form", {
+      const resposta = await fetch("http://localhost:3000/formulario", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados)

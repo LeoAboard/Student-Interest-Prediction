@@ -8,15 +8,27 @@ function generalValidator() {
         //tipo do contato
         body('tipo').isIn(['email', 'telefone']).withMessage("O tipo é inválido"),
 
-        body('email')
+        body('contato')
             .optional({ checkFalsy: true })
-            .matches(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/)
-            .withMessage("O e-mail informado é inválido"),
+            .custom((value, { req }) => {
+                const tipo = req.body.tipo;
 
-        body('telefone')
-            .optional({ checkFalsy: true })
-            .matches(/^(\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$/)
-            .withMessage("O telefone informado é inválido"),
+                if (tipo === 'email') {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+                    if (!emailRegex.test(value)) {
+                        throw new Error("O e-mail informado é inválido");
+                    }
+                }
+
+                if (tipo === 'telefone') {
+                    const telRegex = /^(\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$/;
+                    if (!telRegex.test(value)) {
+                        throw new Error("O telefone informado é inválido");
+                    }
+                }
+
+                return true;
+            }),
 
         //genero
         body('genero').isIn(['masculino', 'feminino', 'prefiro nao informar']).withMessage("O gênero é inválido"),
