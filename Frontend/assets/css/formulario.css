@@ -124,3 +124,23 @@ body.form-body {
 .btn-enviar:hover {
   background-color: #005fcc;
 }
+
+/*formulário*/
+.campo-observacoes {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  resize: vertical;
+  outline: none;
+}
+
+.campo-observacoes:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+

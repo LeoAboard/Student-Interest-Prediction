@@ -78,6 +78,15 @@
 
       
 
+
+
+      <h3 class="subtitulo-form">Preferências</h3>
+      <div class="campo-form">
+            <label>Curso de interesse*</label>
+            <input type="text" name="curso" placeholder="Digite o curso" required>
+      </div>
+
+      
       <div class="campo-form">
             <label>Turno*</label>
             <div class="opcoes">
@@ -87,11 +96,6 @@
             </div>
       </div>
 
-      <h3 class="subtitulo-form">Preferências</h3>
-      <div class="campo-form">
-            <label>Curso*</label>
-            <input type="text" name="curso" placeholder="Digite o curso" required>
-      </div>
       <div class="campo-form">
             <label>Conteúdos de interesse*</label>
             <input type="text" name="interesse" placeholder="Insira a área de interesse" required>
@@ -115,6 +119,21 @@
                 <label><input type="checkbox"> Outros</label>
             </div>
         </div>
+        <div class="campo-form">
+          <label for="observações">Observações</label>
+          <textarea id="obs"
+                  name="observacoes"
+                  class="campo-observacoes"
+                  rows="6"
+                  placeholder="Descreva detalhes adicionais..."></textarea>
+        </div>
+
+        <div class="campo-form">
+          <div class="consentimento">
+            <label> <input type="checkbox"> Concordo com a coleta, armazenamento, tratamento e compartilhamento dos meus dados para a otimização de campanhas de publicidade e aprimoramento de estratégias de comunicação e divulgação.</label>
+          </div>
+        </div>
+
 
       <button type="submit" class="btn-enviar">Enviar</button>
     </form>

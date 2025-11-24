@@ -1,3 +1,7 @@
+window.onload = function() {
+  alert("Seja bem vindo ao formulário!\n Agradecemos seu apoio com a participação nesse pesquisa.")
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("formContribuicao");
 
