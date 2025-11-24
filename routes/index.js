@@ -1,13 +1,15 @@
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 const router = express.Router();
-const { authToken } = require("../middlewares/auth");
-const path = require("path");
+const { authToken } = require('../middlewares/auth');
+const path = require('path');
 require('dotenv').config();
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
 const REQ_LIMIT = process.env.REQ_LIMIT;
 const { getForm, createAluno } = require('../controllers/alunoController');
 const { logout, register, login, exibirGraficos } = require('../controllers/admController');
+const generalValidator = require('../validators/generalValidator');
+const validate = require('../middlewares/validator');
 
 const app = express();
 app.use(cookieParser());
@@ -34,7 +36,7 @@ router.get('/formulario', (req, res) => {
     res.sendFile(path.join(frontendPath, "formulario.html"));
 });
 
-router.post('/formulario', reqLimit, createAluno);
+router.post('/formulario', reqLimit, generalValidator(), validate, createAluno);
 
 /*===============ROTAS ADM===============*/
 
