@@ -13,6 +13,8 @@
     <a href="home" class="btn-voltar"> ← Voltar</a>
 
     <h2 class="form-titulo">Formulário de Contribuição</h2>
+    <p>Campos com asterisco (*) devem ser obrigatoriamente preenchidos.</p>
+    
     <form id="formContribuicao">
 
       <div class="campo-form">
@@ -55,11 +57,13 @@
       </div>
 
       <div class="campo-form">
-          <label>Escolaridade*</label>
+        <label>Escolaridade*</label>
           <select name="escolaridade" id="escolaridade" required>
               <option value="" disabled selected>Selecione a escolaridade</option>
           </select>
-      
+      </div>
+
+      <div class="campo-form">
           <div class="grupo-local">
             <div class="campo-form"> <label>Cidade*</label>
                 <select name="cidade" id="cidade" required>
@@ -90,23 +94,36 @@
       </div>
       
       <div class="campo-form">
-            <label>Turno*</label>
+            <label>Turno</label>
             <div class="opcoes">
                 <label><input type="radio" name="turno" value="matutino"> Matutino</label>
                 <label><input type="radio" name="turno" value="vespertino"> Vespertino</label>
                 <label><input type="radio" name="turno" value="integral"> Integral</label>
             </div>
       </div>
-
+      
       <div class="campo-form">
             <label>Conteúdos de interesse*</label>
             <input type="text" name="interesse" placeholder="Insira a área de interesse" required>
       </div>
-
+      
+      <div class="campo-form">
+        <label> Rede social mais utilizada*</label>
+        <div class="opcoes">
+                <label><input type="radio" name="rede_social" value="Instagram"> Instagram</label>
+                <label><input type="radio" name="rede_social" value="Facebook"> Facebook</label>
+                <label><input type="radio" name="rede_social" value="TikTok"> TikTok</label>
+                <label><input type="radio" name="rede_social" value="Twitter"> Twitter</label>
+                <label><input type="radio" name="rede_social" value="Whatsapp"> Whatsapp</label>
+                <label><input type="radio" name="rede_social" value="Telegram"> Telegram</label>
+            </div>
+      </div>
+      <!--
       <div class="campo-form">
             <label>Rede social mais utilizada*</label>
             <input type="text" name="rede_social" placeholder="Ex: Instagram, LinkedIn..." required>
       </div>
+    -->
 
         <div class="campo-form">
             <label>Eventos que já participou ou tem interesse*</label>

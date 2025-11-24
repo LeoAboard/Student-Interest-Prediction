@@ -34,7 +34,7 @@ function generalValidator() {
         body('genero').isIn(['masculino', 'feminino', 'prefiro nao informar']).withMessage("O gênero é inválido"),
 
         //rede_social
-        body('rede_social').isIn(['Instagram', 'Facebook', 'TikTok', 'Twitter', 'Whatsapp']).withMessage("A rede social é inválida"),
+        body('rede_social').isIn(['Instagram', 'Facebook', 'TikTok', 'Twitter', 'Whatsapp', 'Telegram']).withMessage("A rede social é inválida"),
 
         //curso
         body('curso_id').isIn([1, 2, 3, 4]).withMessage("O curso é inválido")

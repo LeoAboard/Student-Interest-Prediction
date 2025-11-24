@@ -9,13 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    // Verificação de consentimento e bloqueio de submissão
+    // Validações obrigatórias
     const consentiu = form.querySelector('input[name="consentimento"]').checked;
-    if (!consentiu) {
-      exibirMensagem("Aceite o termo antes de enviar.", "error");
-      return;
-    }
+    const genero = form.querySelector('input[name="genero"]:checked');
+    const enem = form.querySelector('input[name="enem"]:checked');
+    const redeSocial = form.querySelector('input[name="rede_social"]:checked');
+    const eventos = form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked');
     
+    if (!genero) return exibirMensagem("Selecione seu gênero.", "error"); //gener
+    if (!enem) return exibirMensagem("Informe se já prestou o ENEM.", "error"); // fez enem
+    if (!redeSocial) return exibirMensagem("Selecione a rede social mais utilizada.", "error"); //social_media
+    if (eventos.length === 0) return exibirMensagem("Selecione pelo menos um evento.", "error"); //evento
+    if (!consentiu) return exibirMensagem("Aceite o termo antes de enviar.", "error"); //consentimento
     
     const formData = new FormData(form);
     const dados = {};
