@@ -38,6 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ).map(el => el.parentElement.textContent.trim());
     dados.eventos = eventosSelecionados;
 
+    //console.log("Objeto enviado:", dados);
+
     try {
       const resposta = await fetch("http://localhost:3000/formulario", {
         method: "POST",
