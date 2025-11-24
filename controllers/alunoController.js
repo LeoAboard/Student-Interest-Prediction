@@ -4,6 +4,7 @@ const Cidade = require("../models/Cidade");
 const Preferencia = require("../models/Preferencia");
 const Curso = require("../models/Curso");
 const Contato = require("../models/Contato");
+const Estado = require("../models/Estado")
 
 async function getForm(req, res) {
     try {    
@@ -12,11 +13,13 @@ async function getForm(req, res) {
         const cidade = await Cidade.findAll({
             attributes: ['id', 'nome', 'estado_id']
         });
+        const uf = await Estado.findAll();
 
        return res.json({
         escolaridade,
         cidade,
-        curso
+        curso,
+        uf
        });
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno` });
