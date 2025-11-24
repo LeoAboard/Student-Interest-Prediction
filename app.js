@@ -14,9 +14,9 @@ app.use(express.urlencoded({extended: true}));
 
 /*modificações cleiton para front*/
 
-const frontendRoutes = require("./routes/frontend");
-app.use(express.static("./Frontend"));
-app.use("/", frontendRoutes);
+// const frontendRoutes = require("./routes/frontend");
+// app.use(express.static("./Frontend"));
+// app.use("/", frontendRoutes);
 /* ================================ */
 
 app.use('/', rotas);
