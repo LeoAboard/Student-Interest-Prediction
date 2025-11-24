@@ -13,6 +13,7 @@ const app = express();
 app.use(cookieParser());
 app.use(router);
 const frontendPath = path.join(__dirname, "..", "Frontend");
+app.use(express.static(frontendPath));
 
 /*=========SEGURANÇA DE REQUISIÇÃO==========*/
 
