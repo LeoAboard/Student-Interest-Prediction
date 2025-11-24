@@ -31,7 +31,6 @@
           <select name="tipo_contato">
             <option>Escolha o tipo</option>
             <option>Email</option>
-            <option>WhatsApp</option>
             <option>Telefone</option>
           </select>
           <input type="text" name="contato" placeholder="Insira o contato">
@@ -76,16 +75,19 @@
           </div>
       </div>      
 
-      
-
-
-
       <h3 class="subtitulo-form">Preferências</h3>
-      <div class="campo-form">
+      <!--<div class="campo-form">
             <label>Curso de interesse*</label>
             <input type="text" name="curso" placeholder="Digite o curso" required>
       </div>
+      -->
 
+      <div class="campo-form">
+                <label>Curso de Interesse*</label>
+                <select name="curso" id="curso" required>
+                    <option value="" disabled selected>Selecione o curso</option>
+                    </select>
+      </div>
       
       <div class="campo-form">
             <label>Turno*</label>
@@ -130,7 +132,7 @@
 
         <div class="campo-form">
           <div class="consentimento">
-            <label> <input type="checkbox"> Concordo com a coleta, armazenamento, tratamento e compartilhamento dos meus dados para a otimização de campanhas de publicidade e aprimoramento de estratégias de comunicação e divulgação.</label>
+            <label> <input type="checkbox" name="consentimento"> Concordo com a coleta, armazenamento, tratamento e compartilhamento dos meus dados para a otimização de campanhas de publicidade e aprimoramento de estratégias de comunicação e divulgação.</label>
           </div>
         </div>
 

@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectCidade = document.getElementById("cidade");
   const selectEscolaridade = document.getElementById("escolaridade");
   const selectUF = document.getElementById("uf");
+  const selectCurso = document.getElementById("curso");
 
   // Função assíncrona para buscar os dados e popular os dropdowns
   async function popularFormulario() {
@@ -92,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
       popularSelect(selectCidade, data.cidade, "Selecione a cidade");
       popularSelect(selectEscolaridade, data.escolaridade, "Selecione a escolaridade");
       popularSelect(selectUF, data.uf, "Selecione o UF");
+      popularSelect(selectCurso, data.curso, "Selecione o curso");
 
     } catch (erro) {
         console.error("Falha ao buscar dados para o formulário:", erro);
