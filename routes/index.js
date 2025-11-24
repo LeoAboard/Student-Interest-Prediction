@@ -31,6 +31,10 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(frontendPath, "home.html"));
 });
 
+router.get('/home', (req, res) => {
+    res.sendFile(path.join(frontendPath, "home.html"));
+});
+
 router.get('/form', reqLimit, getForm);
 
 router.get('/formulario', (req, res) => {
