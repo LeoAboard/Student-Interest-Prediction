@@ -31,7 +31,7 @@ function generalValidator() {
             }),
 
         //genero
-        body('genero').isIn(['masculino', 'feminino', 'prefiro nao informar']).withMessage("O gênero é inválido"),
+        body('genero').isIn(['masculino', 'feminino', 'outro']).withMessage("O gênero é inválido"),
 
         //rede_social
         body('rede_social').isIn(['Instagram', 'Facebook', 'TikTok', 'Twitter', 'Whatsapp', 'Telegram']).withMessage("A rede social é inválida"),

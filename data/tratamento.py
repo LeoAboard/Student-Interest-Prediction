@@ -1,37 +1,42 @@
 import pandas as pd
 from flask import Flask, request, jsonify
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 import os
 from dotenv import load_dotenv
 import psycopg2
+from datetime import datetime
+
+SECRET = os.environ.get('SERVICE_TOKEN')
 
 load_dotenv()
+
+BD_USER = os.getenv("BD_USER")
+BD_PASS = os.getenv("BD_PASS")
+HOST = os.getenv("HOST")
+BD_PORT = os.getenv("BD_PORT")
+BD_NAME = os.getenv("BD_NAME")
+
 app = Flask(__name__)
-@app.route("/processar", methods=["POST"])
+engine = create_engine(
+    f"postgresql+psycopg2://{BD_USER}:{BD_PASS}@{HOST}:{BD_PORT}/{BD_NAME}"
+)
 
-def processar():
-    data_limite = request.get_json()['ano_limite']
+@app.route("/data", methods=["POST"])
+# def handle_data():
+#     return processar_graficos()
 
-    user = os.getenv("BD_USER")
-    password = os.getenv("BD_PASS")
-    host = os.getenv("BD_HOST")
-    port = os.getenv("BD_PORT")
-    database = os.getenv("BD_NAME")
+def processar_graficos():
+    auth = request.headers.get('Authorization', '')
+    if(auth != SECRET):
+        return jsonify({"error": "Unauthorized"}), 401
+    
+    data = request.get_json()
+    date_str = data.get('ano_limite')
 
-    engine = create_engine(f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{database}")
+    with engine.connect() as connection:
+        query = text("SELECT * FROM aluno WHERE id > 2")
+        result = connection.execute(query)
+        df = pd.DataFrame(result.fetchall(), columns=result.keys())
 
-    query = "SELECT nome FROM aluno WHERE data_cadastro <= %(data_limite)s"
-    df = pd.read_sql(query, engine, params={"data_limite": data_limite})
-
-    return jsonify(df.to_dict(orient="records"))
-
-    #to-do
-    #gerar gráfico de pizza sobre número de alunos interessados por curso
-    #gerar gráfico sobre número de alunos por cidade
-    #gerar gráfico pizza sobre redes sociais preferidas
-    #gerar gráfico sobre número de alunos por sexo e idade
-    #FILTROS DE GRÁFICOS: INSTITUIÇÃO E ANO DE COLETA
-
-if __name__ == "__main__":
-    app.run(port=os.getenv("PORT_FLASK"))
+    return(df.to_json(orient='records'))
 

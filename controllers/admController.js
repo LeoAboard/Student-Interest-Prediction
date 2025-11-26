@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const { generateToken } = require('../middlewares/auth');
 const Adm = require("../models/Adm");
 const Database = require("../models/Database");
+const { json } = require("sequelize");
 require('dotenv').config();
 
 async function register(req, res){
@@ -52,8 +53,22 @@ async function exibirGraficos(req, res) {
     try{
         const { ano_limite } = req.body;
 
+        const busca = await fetch(process.env.URL_API, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: process.env.SERVICE_TOKEN
+            },
+            body: JSON.stringify({ ano_limite })
+        });
 
-        return res.status(201).json({ message: "Gráficos: " });
+        if(!busca){
+            throw new Error("Erro ao buscar os gráficos");
+        }
+
+        const resposta = await busca.text();
+
+        return res.status(201).json({ message: resposta });
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno ${error}` });
     }
