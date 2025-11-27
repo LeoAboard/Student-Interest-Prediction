@@ -57,8 +57,10 @@
       </div>
 
       <div class="campo-form">
-        <label>Escola onde estuda*</label>
-        <input type="text" name="instituicao" placeholder="Instituição" required>
+        <label>Instituição*</label>
+          <select name="instituicao_id" id="instituicao" required>
+              <option value="" disabled selected>Selecione sua escola</option>
+          </select>
       </div>
 
       <div class="campo-form">
@@ -112,6 +114,7 @@
             <div class="opcoes">
                 <label><input type="radio" name="turno" value="matutino"> Matutino</label>
                 <label><input type="radio" name="turno" value="vespertino"> Vespertino</label>
+                <label><input type="radio" name="turno" value="noturno"> Noturno</label>
                 <label><input type="radio" name="turno" value="integral"> Integral</label>
             </div>
       </div>
@@ -140,16 +143,15 @@
     -->
 
         <div class="campo-form">
-            <label>Eventos que já participou ou tem interesse*</label>
+            <label>Evento que já participou ou tem interesse*</label>
             <div class="opcoes-multiplas">
-                <label><input type="checkbox"> Feira de Profissões</label>
-                <label><input type="checkbox"> Palestras em Escolas</label>
-                <label><input type="checkbox"> Workshop de Programação</label>
-                <label><input type="checkbox"> Hackathon</label>
-                <label><input type="checkbox"> Semana de Tecnologia</label>
-                <label><input type="checkbox"> Congressos</label>
-                <label><input type="checkbox"> Hacknights</label>
-                <label><input type="checkbox"> Outros</label>
+                <label><input type="radio" name="evento" value="feira de profissoes"> Feira de Profissões</label>
+                <label><input type="radio" name="evento" value="palestras"> Palestras em Escolas</label>
+                <label><input type="radio" name="evento" value="workshop"> Workshop de Programação</label>
+                <label><input type="radio" name="evento" value="hackaton"> Hackathon</label>
+                <label><input type="radio" name="evento" value="semana academica"> Semana de Tecnologia</label>
+                <label><input type="radio" name="evento" value="congresso"> Congressos</label>
+                <label><input type="radio" name="evento" value="outros"> Outros</label>
             </div>
         </div>
         <div class="campo-form">

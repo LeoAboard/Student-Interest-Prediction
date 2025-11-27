@@ -29,8 +29,8 @@ const Aluno = Database.sequelize.define('aluno', {
         allowNull: true
     },
 
-    instituicao: {
-        type: Database.Sequelize.STRING(100),
+    instituicao_id: {
+        type: Database.Sequelize.INTEGER,
         allowNull: false
     },
 

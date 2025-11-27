@@ -5,6 +5,7 @@ const Preferencia = require("../models/Preferencia");
 const Curso = require("../models/Curso");
 const Contato = require("../models/Contato");
 const Estado = require("../models/Estado")
+const Instituicao = require("../models/Instituicao");
 
 async function getForm(req, res) {
     try {    
@@ -14,12 +15,14 @@ async function getForm(req, res) {
             attributes: ['id', 'nome', 'estado_id']
         });
         const uf = await Estado.findAll();
+        const instituicao = await Instituicao.findAll();
 
        return res.json({
         escolaridade,
         cidade,
         curso,
-        uf
+        uf,
+        instituicao
        });
     } catch(error) {
         return res.status(500).json({ error: `Ocorreu um erro interno` });
@@ -32,7 +35,7 @@ async function createAluno(req, res) {
             nome,
             data_nasc,
             genero,
-            instituicao,
+            instituicao_id,
             consentimento,
             cidade_id,
             escolaridade_id,
@@ -44,19 +47,18 @@ async function createAluno(req, res) {
             curso_id,
             observacao,
             tipo,
-            contato         
+            contato,
+            evento         
         } = req.body;
 
-        if(!data_nasc || !genero || !instituicao || !cidade_id || !escolaridade_id)  
+        if(!data_nasc || !genero || !instituicao_id || !cidade_id || !escolaridade_id)  
             return res.status(400).json({ error: "O formulário está incompleto"});
-
-        const instituicaoLow = instituicao.toLowerCase();
 
         const aluno = await Aluno.create({
             nome,
             data_nasc,
             genero,
-            instituicao: instituicaoLow,
+            instituicao_id,
             consentimento,
             cidade_id,
             escolaridade_id
@@ -70,7 +72,8 @@ async function createAluno(req, res) {
             interesse,
             faz_enem,
             curso_id,
-            observacao
+            observacao,
+            evento
         });
 
         await Contato.create({

@@ -49,6 +49,11 @@ const Preferencia = Database.sequelize.define('preferencia', {
         type: Database.Sequelize.TEXT,
         allowNull: true
     },
+
+    evento: {
+        type: Database.Sequelize.TEXT,
+        allowNull: true
+    },
 },
 {
     tableName: 'preferencia',

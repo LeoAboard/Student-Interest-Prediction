@@ -14,12 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const genero = form.querySelector('input[name="genero"]:checked');
     const enem = form.querySelector('input[name="faz_enem"]:checked');
     const redeSocial = form.querySelector('input[name="rede_social"]:checked');
-    const eventos = form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked');
     
     if (!genero) return exibirMensagem("Selecione seu gênero.", "error"); //gener
     if (!enem) return exibirMensagem("Informe se já prestou o ENEM.", "error"); // fez enem
     if (!redeSocial) return exibirMensagem("Selecione a rede social mais utilizada.", "error"); //social_media
-    if (eventos.length === 0) return exibirMensagem("Selecione pelo menos um evento.", "error"); //evento
     if (!consentiu) return exibirMensagem("Aceite o termo antes de enviar.", "error"); //consentimento
     
     const formData = new FormData(form);
@@ -33,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     dados.turno = form.querySelector('input[name="turno"]:checked')?.value || null;
     dados.enem = form.querySelector('input[name="faz_enem"]:checked')?.value || null;
 
-    const eventosSelecionados = Array.from(
-      form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')
-    ).map(el => el.parentElement.textContent.trim());
-    dados.eventos = eventosSelecionados;
+    // const eventosSelecionados = Array.from(
+    //   form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')
+    // ).map(el => el.parentElement.textContent.trim());
+    // dados.evento = eventosSelecionados;
 
     //console.log("Objeto enviado:", dados);
 
@@ -92,6 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectEscolaridade = document.getElementById("escolaridade");
   const selectUF = document.getElementById("uf");
   const selectCurso = document.getElementById("curso_id");
+  const selectInstituicao = document.getElementById("instituicao");
 
   // Função assíncrona para buscar os dados e popular os dropdowns
   async function popularFormulario() {
@@ -110,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       popularSelect(selectEscolaridade, data.escolaridade, "Selecione a escolaridade");
       popularSelect(selectUF, data.uf, "Selecione o UF");
       popularSelect(selectCurso, data.curso, "Selecione o curso");
+      popularSelect(selectInstituicao, data.instituicao, "Selecione sua escola");
 
     } catch (erro) {
         console.error("Falha ao buscar dados para o formulário:", erro);

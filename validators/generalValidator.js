@@ -37,7 +37,13 @@ function generalValidator() {
         body('rede_social').isIn(['Instagram', 'Facebook', 'TikTok', 'Twitter', 'Whatsapp', 'Telegram']).withMessage("A rede social é inválida"),
 
         //curso
-        body('curso_id').isIn([1, 2, 3, 4]).withMessage("O curso é inválido")
+        body('curso_id').isIn([1, 2, 3, 4]).withMessage("O curso é inválido"),
+
+        body('interesse').isLength({ max: 100 }).withMessage("O interesse é inválido"),
+
+        body('observacao').isLength({ max: 300 }).withMessage("A observação é inválida"),
+
+        body('evento').isLength({ max: 50 }).withMessage("O evento é inválido")
     ];
 }
 
