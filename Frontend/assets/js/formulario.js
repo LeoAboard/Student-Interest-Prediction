@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectCidade = document.getElementById("cidade");
   const selectEscolaridade = document.getElementById("escolaridade");
   const selectUF = document.getElementById("uf");
-  const selectCurso = document.getElementById("curso");
+  const selectCurso = document.getElementById("curso_id");
 
   // Função assíncrona para buscar os dados e popular os dropdowns
   async function popularFormulario() {
