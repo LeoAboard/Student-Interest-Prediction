@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Validações obrigatórias
     const consentiu = form.querySelector('input[name="consentimento"]').checked;
     const genero = form.querySelector('input[name="genero"]:checked');
-    const enem = form.querySelector('input[name="enem"]:checked');
+    const enem = form.querySelector('input[name="faz_enem"]:checked');
     const redeSocial = form.querySelector('input[name="rede_social"]:checked');
     const eventos = form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked');
     
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dados.genero = form.querySelector('input[name="genero"]:checked')?.value || null;
     dados.turno = form.querySelector('input[name="turno"]:checked')?.value || null;
-    dados.enem = form.querySelector('input[name="enem"]:checked')?.value || null;
+    dados.enem = form.querySelector('input[name="faz_enem"]:checked')?.value || null;
 
     const eventosSelecionados = Array.from(
       form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')

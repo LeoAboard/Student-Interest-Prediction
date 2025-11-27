@@ -50,11 +50,13 @@ async function createAluno(req, res) {
         if(!data_nasc || !genero || !instituicao || !cidade_id || !escolaridade_id)  
             return res.status(400).json({ error: "O formulário está incompleto"});
 
+        const instituicaoLow = instituicao.toLowerCase();
+
         const aluno = await Aluno.create({
             nome,
             data_nasc,
             genero,
-            instituicao,
+            instituicao: instituicaoLow,
             consentimento,
             cidade_id,
             escolaridade_id

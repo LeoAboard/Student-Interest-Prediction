@@ -24,13 +24,13 @@
 
       <div class="campo-form">
         <label>Data de Nascimento*</label>
-        <input type="date" name="nascimento" required>
+        <input type="date" name="data_nasc" required>
       </div>
 
       <div class="campo-form">
         <label>Contato</label>
         <div class="grupo-input">
-          <select name="tipo_contato">
+          <select name="tipo">
             <option>Escolha o tipo</option>
             <option>email</option>
             <option>telefone</option>
@@ -51,14 +51,19 @@
       <div class="campo-form">
             <label>Já prestou ENEM?*</label>
             <div class="opcoes">
-            <label><input type="radio" name="enem" value="sim"> SIM</label>
-            <label><input type="radio" name="enem" value="nao"> NÃO</label>
+            <label><input type="radio" name="faz_enem" value=1> SIM</label>
+            <label><input type="radio" name="faz_enem" value=0> NÃO</label>
             </div>
       </div>
 
       <div class="campo-form">
+        <label>Escola onde estuda*</label>
+        <input type="text" name="instituicao" placeholder="Instituição" required>
+      </div>
+
+      <div class="campo-form">
         <label>Escolaridade*</label>
-          <select name="escolaridade" id="escolaridade" required>
+          <select name="escolaridade_id" id="escolaridade" required>
               <option value="" disabled selected>Selecione a escolaridade</option>
           </select>
       </div>
@@ -66,7 +71,7 @@
       <div class="campo-form">
           <div class="grupo-local">
             <div class="campo-form"> <label>Cidade*</label>
-                <select name="cidade" id="cidade" required>
+                <select name="cidade_id" id="cidade" required>
                     <option value="" disabled selected>Selecione a cidade</option>
                     </select>
             </div>
@@ -91,6 +96,15 @@
                 <select name="curso_id" id="curso_id" required>
                     <option value="" disabled selected>Selecione o curso</option>
                     </select>
+      </div>
+
+      <div class="campo-form">
+        <label>Área de interesse</label>
+        <div class="opcoes">
+            <label><input type="radio" name="area_atuacao" value="exatas"> Exatas</label>
+            <label><input type="radio" name="area_atuacao" value="humanas"> Humanas</label>
+            <label><input type="radio" name="area_atuacao" value="biologicas"> Biologicas</label>
+        </div>
       </div>
       
       <div class="campo-form">
