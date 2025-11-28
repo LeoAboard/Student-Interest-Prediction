@@ -43,7 +43,9 @@ function generalValidator() {
 
         body('observacao').isLength({ max: 300 }).withMessage("A observação é inválida"),
 
-        body('evento').isLength({ max: 50 }).withMessage("O evento é inválido")
+        body('evento').isLength({ max: 50 }).withMessage("O evento é inválido"),
+
+        body('instituicao').isLength({ max: 50 }).withMessage("A instituição é inválida")
     ];
 }
 
