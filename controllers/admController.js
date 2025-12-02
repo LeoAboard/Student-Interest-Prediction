@@ -51,7 +51,7 @@ async function login(req, res) {
 
 async function exibirGraficos(req, res) {
     try{
-        const { ano_limite, contagem, redes_sociais } = req.body;
+        const { ano_limite, contagem, redes_sociais, turno, localizacao, enem } = req.body;
 
         const busca = await fetch(process.env.URL_API, {
             method: 'POST',
@@ -59,7 +59,7 @@ async function exibirGraficos(req, res) {
                 'Content-Type': 'application/json',
                 Authorization: process.env.SERVICE_TOKEN
             },
-            body: JSON.stringify({ ano_limite, contagem, redes_sociais })
+            body: JSON.stringify({ ano_limite, contagem, redes_sociais, turno, localizacao, enem })
         });
 
         if(!busca){
