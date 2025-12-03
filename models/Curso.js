@@ -12,6 +12,10 @@ const Curso = Database.sequelize.define('curso', {
         type: Database.Sequelize.STRING(50),
         allowNull: false
     }
+},
+{
+    tableName: 'curso',
+    timestamps: false
 });
 
 module.exports = Curso;

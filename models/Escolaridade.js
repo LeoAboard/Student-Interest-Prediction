@@ -12,6 +12,10 @@ const Escolaridade = Database.sequelize.define('escolaridade', {
         type: Database.Sequelize.STRING(100),
         allowNull: false
     },
+},
+{
+    tableName: 'escolaridade',
+    timestamps: false
 });
 
 module.exports = Escolaridade;

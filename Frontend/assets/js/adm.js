@@ -21,3 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// BTN de logout
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  const confirmar = confirm("Deseja realmente sair?");
+
+  if (!confirmar) return;
+
+  const resposta = await fetch("/logout", {
+    method: "POST",
+    credentials: "include"
+  });
+
+  const data = await resposta.json();
+
+  if (resposta.status === 201) {
+    alert(data.message);
+    window.location.href = "/login";
+  } else {
+    alert("Erro ao deslogar."); //okay
+  }
+});
