@@ -59,6 +59,8 @@ router.get('/adm', authToken, (req, res) => {
 
 router.post('/adm', authToken, exibirGraficos);
 
-router.post('/logout', authToken, logout);
+//router.post('/logout', authToken, logout);
+router.post('/logout', logout); //modificado
+
 
 module.exports = app;
