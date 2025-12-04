@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // SERVICE TOKEN enviado pelo backend
-  const SERVICE_TOKEN = "SEU_TOKEN_AQUI"; // Aqui que coloca aquele token amigo
+  const SERVICE_TOKEN = window.__SERVICE_TOKEN__;
   async function enviarRequisicao(payload) {
     try {
       const res = await fetch("/data", {
