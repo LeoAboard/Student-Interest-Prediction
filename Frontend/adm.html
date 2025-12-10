@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Área Administrativa - DivulgaComp</title>
+    <link rel="icon" type="image/png" href="assets/img/livros.png">
   <link rel="stylesheet" href="assets/css/adm.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -24,7 +25,7 @@
   <main class="main-content">
     <header class="adm-header">
       <h1>Área Administrativa</h1>
-      <button id="logoutBtn" class="logout">Sair</button>
+      <button id="logoutBtn" class="logout" type="button">Sair</button>
       <hr>
     </header>
 
@@ -36,8 +37,8 @@
         <div class="card">
           <h2>Alunos inscritos ao ano</h2>
           <label for="anoGeral">Ano:</label>
-          <input type="number" id="anoGeral" placeholder="Ex.: 2025 ou -1">
-          <button id="btnContagem">Consultar</button>
+          <input class="data_consult" type="number" id="anoGeral" placeholder="Ex.: 2025 ou -1">
+          <button id="btnContagem" class="btn" type="button">Consultar</button>
           <h3>Resultado:</h3>
           <div id="resultadoContagem"></div>
         </div>
@@ -47,10 +48,10 @@
         <div class="card">
           <h2> Alunos no banco de participantes do ENEM </h2>
           <label for="anoEnem">Ano:</label>
-          <input type="number" id="anoEnem" placeholder="Ex.: 2025 ou -1">
-          <button id="btnEnem">Gerar Gráfico</button>
+          <input class="data_consult" type="number" id="anoEnem" placeholder="Ex.: 2025 ou -1">
+          <button id="btnEnem" class="btn" type="button">Gerar Gráfico</button>
           <h3>Gráfico:</h3>
-          <img id="imgEnem" style="max-width: 600px;">
+          <img id="imgEnem" alt="Gráfico do ENEM" style="max-width: 600px;">
         </div>
       </div>
     </section>
@@ -63,10 +64,10 @@
         <div class="card">
           <h2>Análise do Público</h2>
           <label for="anoCidade">Ano:</label>
-          <input type="number" id="anoCidade" placeholder="Ex.: 2025 ou -1">
-          <button id="btnCidade">Gerar Gráfico</button>
+          <input class="data_consult" type="number" id="anoCidade" placeholder="Ex.: 2025 ou -1">
+          <button id="btnCidade" class="btn" type="button">Gerar Gráfico</button>
           <h3>Gráfico:</h3>
-          <img id="imgCidade" style="max-width: 600px;">
+          <img id="imgCidade" alt="Gráfico da análise por cidade" style="max-width: 600px;">
         </div>
       </div>
 
@@ -88,10 +89,10 @@
         <div class="card">
           <h2>Popularidade de plataformas</h2>
           <label for="anoRedes">Ano:</label>
-          <input type="number" id="anoRedes" placeholder="Ex.: 2025 ou -1">
-          <button id="btnRedes">Gerar Gráfico</button>
+          <input class="data_consult" type="number" id="anoRedes" placeholder="Ex.: 2025 ou -1">
+          <button id="btnRedes" class="btn" type="button">Gerar Gráfico</button>
           <h3>Gráfico:</h3>
-          <img id="imgRedes" style="max-width: 600px;">
+          <img id="imgRedes" alt="Gráfico de redes sociais" style="max-width: 600px;">
         </div>
       </div>
     </section>
@@ -117,10 +118,10 @@
         <div class="card">
           <h2>Contagem de alunos por turno</h2>
           <label for="anoTurno">Ano:</label>
-          <input type="number" id="anoTurno" placeholder="Ex.: 2025 ou -1">
-          <button id="btnTurno">Gerar Gráfico</button>
+          <input class="data_consult" type="number" id="anoTurno" placeholder="Ex.: 2025 ou -1">
+          <button id="btnTurno" class="btn" type="button">Gerar Gráfico</button>
           <h3>Gráfico:</h3>
-          <img id="imgTurno" style="max-width: 600px;">
+          <img id="imgTurno" alt="Gráfico por turno" style="max-width: 600px;">
         </div>
       </div>
 

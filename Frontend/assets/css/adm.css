@@ -135,6 +135,22 @@
   display: block;
 }
 
+.btn {
+  background-color: #007BFF;
+  border: none;
+  padding: 10px 16px;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
 .logout {
   background-color: #007BFF;
   border:none;
@@ -148,4 +164,16 @@
 
 .logout:hover {
   background-color: #c9302c;
+}
+
+.data_consult {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  outline: none;
+}
+.data_consult:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
