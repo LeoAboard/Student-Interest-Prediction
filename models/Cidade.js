@@ -18,6 +18,10 @@ const Cidade = Database.sequelize.define('cidade', {
         allowNull: false,
         foreignKey: true
     },
+},
+{
+    tableName: 'cidade',
+    timestamps: false
 });
 
 module.exports = Cidade;
