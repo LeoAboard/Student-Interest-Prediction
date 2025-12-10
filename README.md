@@ -49,7 +49,7 @@ Siga os passos abaixo para configurar o ambiente de desenvolvimento:
 ### Pré-requisitos
 * [Node.js](https://nodejs.org/) instalado.
 * [Python](https://www.python.org/) instalado (para o script de tratamento).
-* Um gerenciador de banco de dados SQL (ex: MySQL ou PostgreSQL) configurado.
+* [Postgres](https://www.postgresql.org/) intalado e configurado.
 
 ### 1. Clonar o Repositório
 ```bash
