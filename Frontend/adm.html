@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Área Administrativa - DivulgaComp</title>
+    <link rel="icon" type="image/png" href="assets/img/livros.png">
   <link rel="stylesheet" href="assets/css/adm.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
@@ -16,7 +17,7 @@
       <li><a href="#" data-target="publico"><i class="fa-solid fa-users"></i> Análise do Público</a></li>
       <li><a href="#" data-target="redes"><i class="fa-solid fa-handshake"></i> Redes Sociais</a></li>
       <li><a href="#" data-target="eventos"><i class="fa-solid fa-calendar"></i> Eventos</a></li>
-      <li><a href="#" data-target="novidades"><i class="fa-solid fa-lightbulb"></i> Novidades</a></li>
+      <li><a href="#" data-target="novidades"><i class="fa-solid fa-lightbulb"></i> Preferências</a></li>
       <li><a href="#" data-target="base"><i class="fa-solid fa-database"></i> Base de Dados</a></li>
     </ul>
   </aside>
@@ -24,60 +25,118 @@
   <main class="main-content">
     <header class="adm-header">
       <h1>Área Administrativa</h1>
+      <button id="logoutBtn" class="logout" type="button">Sair</button>
       <hr>
     </header>
 
+    <!-- Primeira seção da barra lateral VISÃO GERAL-->
     <section id="geral" class="adm-section active">
-      <h2>Visão Geral</h2>
       <p>Resumo consolidado dos indicadores principais.</p>
+
       <div class="dashboard-grid">
-        <div class="card">📊 Gráfico de Crescimento</div>
-        <div class="card">👥 Total de Participantes</div>
-        <div class="card">📈 Engajamento Médio</div>
+        <div class="card">
+          <h2>Alunos inscritos ao ano</h2>
+          <label for="anoGeral">Ano:</label>
+          <input class="data_consult" type="number" id="anoGeral" placeholder="Ex.: 2025 ou -1">
+          <button id="btnContagem" class="btn" type="button">Consultar</button>
+          <h3>Resultado:</h3>
+          <div id="resultadoContagem"></div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card">
+          <h2> Alunos no banco de participantes do ENEM </h2>
+          <label for="anoEnem">Ano:</label>
+          <input class="data_consult" type="number" id="anoEnem" placeholder="Ex.: 2025 ou -1">
+          <button id="btnEnem" class="btn" type="button">Gerar Gráfico</button>
+          <h3>Gráfico:</h3>
+          <img id="imgEnem" alt="Gráfico do ENEM" style="max-width: 600px;">
+        </div>
       </div>
     </section>
 
+    <!-- Segunda seção da barra lateral PÚBLICO-->
     <section id="publico" class="adm-section">
-      <h2>Análise do Público</h2>
       <p>Distribuição demográfica e perfil dos contribuintes.</p>
+    
+      <div class="dashboard-grid">
+        <div class="card">
+          <h2>Análise do Público</h2>
+          <label for="anoCidade">Ano:</label>
+          <input class="data_consult" type="number" id="anoCidade" placeholder="Ex.: 2025 ou -1">
+          <button id="btnCidade" class="btn" type="button">Gerar Gráfico</button>
+          <h3>Gráfico:</h3>
+          <img id="imgCidade" alt="Gráfico da análise por cidade" style="max-width: 600px;">
+        </div>
+      </div>
+
+      <!-- 
       <div class="dashboard-grid">
         <div class="card">Idade x Gênero</div>
         <div class="card">Escolaridade</div>
         <div class="card">Instituições</div>
       </div>
+      -->
     </section>
 
+    <!-- Terceira seção da barra lateral REDES SOCIAIS-->
     <section id="redes" class="adm-section">
-      <h2>Redes Sociais</h2>
-      <p>Análise de plataformas mais utilizadas.</p>
+      
+      <p>Análise de plataformas mais populares.</p>
+    
       <div class="dashboard-grid">
-        <div class="card">Plataformas Preferidas</div>
-        <div class="card">Interações por Rede</div>
+        <div class="card">
+          <h2>Popularidade de plataformas</h2>
+          <label for="anoRedes">Ano:</label>
+          <input class="data_consult" type="number" id="anoRedes" placeholder="Ex.: 2025 ou -1">
+          <button id="btnRedes" class="btn" type="button">Gerar Gráfico</button>
+          <h3>Gráfico:</h3>
+          <img id="imgRedes" alt="Gráfico de redes sociais" style="max-width: 600px;">
+        </div>
       </div>
     </section>
 
+    <!-- Quarta seção da barra lateral EVENTOS-->
     <section id="eventos" class="adm-section">
       <h2>Eventos</h2>
       <p>Estatísticas de participação e engajamento.</p>
+      
       <div class="dashboard-grid">
         <div class="card">Feira de Profissões</div>
         <div class="card">Hackathons</div>
         <div class="card">Workshops</div>
       </div>
+      
     </section>
 
+    <!-- Quinta seção da barra lateral PREFERÊNCIAS-->
     <section id="novidades" class="adm-section">
-      <h2>Novidades</h2>
-      <p>Indicadores sobre inovações e feedbacks recentes.</p>
+      <p>Indicadores sobre propensão e feedbacks recentes.</p>
+      
+      <div class="dashboard-grid">
+        <div class="card">
+          <h2>Contagem de alunos por turno</h2>
+          <label for="anoTurno">Ano:</label>
+          <input class="data_consult" type="number" id="anoTurno" placeholder="Ex.: 2025 ou -1">
+          <button id="btnTurno" class="btn" type="button">Gerar Gráfico</button>
+          <h3>Gráfico:</h3>
+          <img id="imgTurno" alt="Gráfico por turno" style="max-width: 600px;">
+        </div>
+      </div>
+
       <div class="dashboard-grid">
         <div class="card">Últimos Insights</div>
         <div class="card">Sugestões Relevantes</div>
       </div>
+      
     </section>
 
+    <!-- Sexta e ultima seção da barra lateral DATABASE TABELA-->
     <section id="base" class="adm-section">
       <h2>Base de Dados</h2>
       <p>Visualização e controle de dados armazenados.</p>
+      
       <div class="dashboard-grid">
         <div class="card">Consulta SQL</div>
         <div class="card">Exportar CSV</div>

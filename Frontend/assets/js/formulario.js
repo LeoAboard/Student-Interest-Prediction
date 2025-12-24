@@ -1,9 +1,25 @@
+window.onload = function() {
+  alert("Seja bem vindo ao formulário!\n Agradecemos seu apoio com a participação nesse pesquisa.")
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("formContribuicao");
 
+  // --- LÓGICA DE ENVIO (SUBMIT) ---
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // Validações obrigatórias
+    const consentiu = form.querySelector('input[name="consentimento"]').checked;
+    const genero = form.querySelector('input[name="genero"]:checked');
+    const enem = form.querySelector('input[name="faz_enem"]:checked');
+    const redeSocial = form.querySelector('input[name="rede_social"]:checked');
+    
+    if (!genero) return exibirMensagem("Selecione seu gênero.", "error"); //gener
+    if (!enem) return exibirMensagem("Informe se já prestou o ENEM.", "error"); // fez enem
+    if (!redeSocial) return exibirMensagem("Selecione a rede social mais utilizada.", "error"); //social_media
+    if (!consentiu) return exibirMensagem("Aceite o termo antes de enviar.", "error"); //consentimento
+    
     const formData = new FormData(form);
     const dados = {};
 
@@ -13,53 +29,124 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dados.genero = form.querySelector('input[name="genero"]:checked')?.value || null;
     dados.turno = form.querySelector('input[name="turno"]:checked')?.value || null;
-    dados.enem = form.querySelector('input[name="enem"]:checked')?.value || null;
+    dados.enem = form.querySelector('input[name="faz_enem"]:checked')?.value || null;
 
-    const eventosSelecionados = Array.from(
-      form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')
-    ).map(el => el.parentElement.textContent.trim());
-    dados.eventos = eventosSelecionados;
+    // const eventosSelecionados = Array.from(
+    //   form.querySelectorAll('.opcoes-multiplas input[type="checkbox"]:checked')
+    // ).map(el => el.parentElement.textContent.trim());
+    // dados.evento = eventosSelecionados;
 
-    console.log("Dados coletados do formulário:", dados);
+    //console.log("Objeto enviado:", dados);
 
     try {
-      const resposta = await fetch("http://localhost:3000/form", {
+      const resposta = await fetch("http://localhost:3000/formulario", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados)
       });
-
       const resultado = await resposta.json();
-
       if (resposta.ok) {
         exibirMensagem("Formulário enviado com sucesso!", "success");
         form.reset();
       } else {
         exibirMensagem(`Erro: ${resultado.error || "Falha no envio."}`, "error");
       }
-
-    } catch (error) {
-      console.error(error);
+    } catch (erro) {
+      console.error(erro);
       exibirMensagem("Erro de conexão com o servidor.", "error");
     }
   });
 
-  function exibirMensagem(texto, tipo) {
-    let msg = document.getElementById("msg");
-    if (!msg) {
-      msg = document.createElement("p");
-      msg.id = "msg";
-      msg.style.textAlign = "center";
-      msg.style.marginTop = "15px";
-      form.after(msg);
-    }
-    msg.textContent = texto;
-    msg.style.color = tipo === "success" ? "green" : "red";
 
-    setTimeout(() => {
-      msg.textContent = "";
-    }, 3000);
+  // --- LÓGICA DE PREENCHIMENTO (DROPDOWNS) ---
+
+  /**
+   * Função auxiliar para popular um <select> com opções.
+   * @param {HTMLSelectElement} selectElement
+   * @param {Array} itens 
+   * @param {string} placeholder 
+   */
+  function popularSelect(selectElement, itens, placeholder) {
+    while (selectElement.options.length > 1) {
+      selectElement.remove(1);
+    }
+
+    const p = selectElement.querySelector('option[disabled]');
+    if (p) {
+        p.textContent = placeholder || "Selecione uma opção";
+    }
+
+    if (itens && Array.isArray(itens)) {
+      itens.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.id; 
+        option.textContent = item.nome || item.nivel || item.uf ||"Sem nome";
+        selectElement.appendChild(option);
+      });
+    }
   }
+  
+  const selectCidade = document.getElementById("cidade");
+  const selectEscolaridade = document.getElementById("escolaridade");
+  const selectUF = document.getElementById("uf");
+  const selectCurso = document.getElementById("curso_id");
+  const selectInstituicao = document.getElementById("instituicao");
+
+  // Função assíncrona para buscar os dados e popular os dropdowns
+  async function popularFormulario() {
+    try {
+      const resp = await fetch("http://localhost:3000/form");
+      if (!resp.ok) {
+        throw new Error(`Falha ao buscar dados: ${resp.statusText}`);
+      }
+      const data = await resp.json();
+
+      dadosDaApi = data
+
+      console.log("DADOS RECEBIDOS DA API:", data);
+
+      popularSelect(selectCidade, data.cidade, "Selecione a cidade");
+      popularSelect(selectEscolaridade, data.escolaridade, "Selecione a escolaridade");
+      popularSelect(selectUF, data.uf, "Selecione o UF");
+      popularSelect(selectCurso, data.curso, "Selecione o curso");
+      popularSelect(selectInstituicao, data.instituicao, "Selecione sua escola");
+
+    } catch (erro) {
+        console.error("Falha ao buscar dados para o formulário:", erro);
+        exibirMensagem("Erro ao carregar opções do formulário.", "error");
+    }
+  }
+
+  function atualizarUFAutomaticamente() {
+    const cidadeIdSelecionada = selectCidade.value;
+
+    if (!dadosDaApi.cidade) {
+      return; 
+    }
+
+    const cidadeEncontrada = dadosDaApi.cidade.find(c => c.id == cidadeIdSelecionada);
+    if (cidadeEncontrada && cidadeEncontrada.estado_id) {
+      selectUF.value = cidadeEncontrada.estado_id;
+    }
+  }
+
+  popularFormulario()
+
+    function exibirMensagem(texto, tipo) {
+      let msg = document.getElementById("msg");
+      if (!msg) {
+        msg = document.createElement("p");
+        msg.id = "msg";
+        msg.style.textAlign = "center";
+        msg.style.marginTop = "15px";
+        form.after(msg);
+      }
+      msg.textContent = texto;
+      msg.style.color = tipo === "success" ? "green" : "red";
+  
+      setTimeout(() => {
+        msg.textContent = "";
+      }, 3000);
+    }
+  selectCidade.addEventListener("change", atualizarUFAutomaticamente);
 });

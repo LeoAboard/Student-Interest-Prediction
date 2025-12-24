@@ -8,6 +8,12 @@ const Contato = Database.sequelize.define('contato', {
         autoIncrement: true
     },
 
+    aluno_id: {
+        type: Database.Sequelize.INTEGER,
+        allowNull: false,
+        foreignKey: true
+    },
+
     tipo: {
         type: Database.Sequelize.STRING(25),
         allowNull: false
@@ -17,6 +23,10 @@ const Contato = Database.sequelize.define('contato', {
         type: Database.Sequelize.STRING(100),
         allowNull: false
     },
+},
+{
+    tableName: 'contato',
+    timestamps: false
 });
 
 module.exports = Contato;

@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário de Contribuição | DivulgaComp</title>
+  <link rel="icon" type="image/png" href="assets/img/livros.png">
   <link rel="stylesheet" href="assets/css/formulario.css">
 </head>
 <body class="form-body">
 
   <div class="form-container">
-    <a href="home.html" class="btn-voltar"> ← Voltar</a>
+    <a href="home" class="btn-voltar"> ← Voltar</a>
 
     <h2 class="form-titulo">Formulário de Contribuição</h2>
+    <p>Campos com asterisco (*) devem ser obrigatoriamente preenchidos.</p>
+    
     <form id="formContribuicao">
 
       <div class="campo-form">
@@ -21,17 +24,16 @@
 
       <div class="campo-form">
         <label>Data de Nascimento*</label>
-        <input type="date" name="nascimento" required>
+        <input type="date" name="data_nasc" required>
       </div>
 
       <div class="campo-form">
         <label>Contato</label>
         <div class="grupo-input">
-          <select name="tipo_contato">
+          <select name="tipo">
             <option>Escolha o tipo</option>
-            <option>Email</option>
-            <option>WhatsApp</option>
-            <option>Telefone</option>
+            <option>email</option>
+            <option>telefone</option>
           </select>
           <input type="text" name="contato" placeholder="Insira o contato">
         </div>
@@ -40,80 +42,133 @@
       <div class="campo-form">
             <label>Gênero*</label>
             <div class="opcoes">
-                <label><input type="radio" name="genero" value="M"> Masculino</label>
-                <label><input type="radio" name="genero" value="F"> Feminino</label>
-                <label><input type="radio" name="genero" value="N"> Prefiro não dizer</label>
+                <label><input type="radio" name="genero" value="masculino"> Masculino</label>
+                <label><input type="radio" name="genero" value="feminino"> Feminino</label>
+                <label><input type="radio" name="genero" value="outro"> Prefiro não dizer</label>
             </div>
       </div>
 
       <div class="campo-form">
-            <label>Já prestou ENEM?</label>
+            <label>Já prestou ENEM?*</label>
             <div class="opcoes">
-            <label><input type="radio" name="enem" value="sim"> SIM</label>
-            <label><input type="radio" name="enem" value="nao"> NÃO</label>
+            <label><input type="radio" name="faz_enem" value=1> SIM</label>
+            <label><input type="radio" name="faz_enem" value=0> NÃO</label>
             </div>
       </div>
 
       <div class="campo-form">
-            <label>Escolaridade*</label>
-            <input type="text" name="escolaridade" placeholder="Nível de ensino conforme a LDB" required>
+        <label>Instituição*</label>
+          <select name="instituicao_id" id="instituicao" required>
+              <option value="" disabled selected>Selecione sua escola</option>
+          </select>
       </div>
 
       <div class="campo-form">
-            <label>Instituição de Ensino*</label>
-            <input type="text" name="instituicao" placeholder="Digite a escola ou universidade" required>
-      </div>
-
-      <div class="grupo-local">
-            <div>
-            <label>Cidade*</label>
-            <input type="text" name="cidade" placeholder="Ex: Três Lagoas" required>
-            </div>
-            <div>
-            <label>UF*</label>
-            <input type="text" name="uf" maxlength="2" required>
-            </div>
+        <label>Escolaridade*</label>
+          <select name="escolaridade_id" id="escolaridade" required>
+              <option value="" disabled selected>Selecione a escolaridade</option>
+          </select>
       </div>
 
       <div class="campo-form">
-            <label>Curso*</label>
+          <div class="grupo-local">
+            <div class="campo-form"> <label>Cidade*</label>
+                <select name="cidade_id" id="cidade" required>
+                    <option value="" disabled selected>Selecione a cidade</option>
+                    </select>
+            </div>
+            <div class="campo-form">
+                <label>UF*</label>
+                <select name="uf" id="uf" required>
+                    <option value="" disabled selected>Selecione o UF</option>
+                    </select>
+            </div>
+          </div>
+      </div>      
+
+      <h3 class="subtitulo-form">Preferências</h3>
+      <!--<div class="campo-form">
+            <label>Curso de interesse*</label>
             <input type="text" name="curso" placeholder="Digite o curso" required>
       </div>
+      -->
 
       <div class="campo-form">
-            <label>Turno*</label>
+                <label>Curso de Interesse*</label>
+                <select name="curso_id" id="curso_id" required>
+                    <option value="" disabled selected>Selecione o curso</option>
+                    </select>
+      </div>
+
+      <div class="campo-form">
+        <label>Área de interesse</label>
+        <div class="opcoes">
+            <label><input type="radio" name="area_atuacao" value="exatas"> Exatas</label>
+            <label><input type="radio" name="area_atuacao" value="humanas"> Humanas</label>
+            <label><input type="radio" name="area_atuacao" value="biologicas"> Biologicas</label>
+        </div>
+      </div>
+      
+      <div class="campo-form">
+            <label>Turno</label>
             <div class="opcoes">
                 <label><input type="radio" name="turno" value="matutino"> Matutino</label>
                 <label><input type="radio" name="turno" value="vespertino"> Vespertino</label>
+                <label><input type="radio" name="turno" value="noturno"> Noturno</label>
                 <label><input type="radio" name="turno" value="integral"> Integral</label>
             </div>
       </div>
-
-      <h3 class="subtitulo-form">Preferências</h3>
-
+      
       <div class="campo-form">
             <label>Conteúdos de interesse*</label>
             <input type="text" name="interesse" placeholder="Insira a área de interesse" required>
       </div>
-
+      
+      <div class="campo-form">
+        <label> Rede social mais utilizada*</label>
+        <div class="opcoes">
+                <label><input type="radio" name="rede_social" value="Instagram"> Instagram</label>
+                <label><input type="radio" name="rede_social" value="Facebook"> Facebook</label>
+                <label><input type="radio" name="rede_social" value="TikTok"> TikTok</label>
+                <label><input type="radio" name="rede_social" value="Twitter"> Twitter</label>
+                <label><input type="radio" name="rede_social" value="Whatsapp"> Whatsapp</label>
+                <label><input type="radio" name="rede_social" value="Telegram"> Telegram</label>
+            </div>
+      </div>
+      <!--
       <div class="campo-form">
             <label>Rede social mais utilizada*</label>
             <input type="text" name="rede_social" placeholder="Ex: Instagram, LinkedIn..." required>
       </div>
+    -->
 
         <div class="campo-form">
-            <label>Eventos que já participou ou tem interesse*</label>
+            <label>Evento que já participou ou tem interesse*</label>
             <div class="opcoes-multiplas">
-                <label><input type="checkbox"> Feira de Profissões</label>
-                <label><input type="checkbox"> Palestras em Escolas</label>
-                <label><input type="checkbox"> Workshop de Programação</label>
-                <label><input type="checkbox"> Hackathon</label>
-                <label><input type="checkbox"> Semana de Tecnologia</label>
-                <label><input type="checkbox"> Congressos</label>
-                <label><input type="checkbox"> Hacknights</label>
-                <label><input type="checkbox"> Outros</label>
+                <label><input type="radio" name="evento" value="feira de profissoes"> Feira de Profissões</label>
+                <label><input type="radio" name="evento" value="palestras"> Palestras em Escolas</label>
+                <label><input type="radio" name="evento" value="workshop"> Workshop de Programação</label>
+                <label><input type="radio" name="evento" value="hackaton"> Hackathon</label>
+                <label><input type="radio" name="evento" value="semana academica"> Semana de Tecnologia</label>
+                <label><input type="radio" name="evento" value="congresso"> Congressos</label>
+                <label><input type="radio" name="evento" value="outros"> Outros</label>
             </div>
         </div>
+        <div class="campo-form">
+          <label for="observações">Observações</label>
+          <textarea id="obs"
+                  name="observacoes"
+                  class="campo-observacoes"
+                  rows="6"
+                  placeholder="Descreva detalhes adicionais..."></textarea>
+        </div>
+
+        <div class="campo-form">
+          <div class="consentimento">
+            <label> <input type="checkbox" name="consentimento"> Concordo com a coleta, armazenamento, tratamento e compartilhamento dos meus dados para a otimização de campanhas de publicidade e aprimoramento de estratégias de comunicação e divulgação.</label>
+          </div>
+        </div>
+
 
       <button type="submit" class="btn-enviar">Enviar</button>
     </form>
